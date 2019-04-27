@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "sdkVersion": "30.0.0",
+    "icon": "./assets/iOS-icon.png",
+    "slug": "belmontfinancedealers",
+    "splash": {
+      "resizeMode": "cover",
+      "image": "./assets/LaunchImages/splashs-screen-mini.png"
+    },
+    "orientation": "portrait",
+    "primaryColor": "#cccccc",
+    "packagerOpts": {
+      "assetExts": ["ttf"]
+    },
+    "ios": {
+      "bundleIdentifier": "com.belmontfinance.dealers"
+    },
+    "android": {                                  
+      "package": "com.belmontfinance.dealers"
+    },
+    "androidStatusBarColor": "#39aa44",
+    "androidStatusBar": {
+      "barStyle": "dark-content",
+      "backgroundColor": "#39aa44"
+    }
+  }
+}
