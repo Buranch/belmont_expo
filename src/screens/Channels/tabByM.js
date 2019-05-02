@@ -205,15 +205,15 @@ class TabOne extends Component {
                       selectedValue={this.state.term}
                       onValueChange={(e)=>this.onValueChange('term', e)}
                     >
-                      <Picker.Item label="12 Months" value="3,30" />
-                      <Picker.Item label="24 Months" value="6,30" />
-                      <Picker.Item label="36 Months" value="12,30" />
-                      <Picker.Item label="48 Months" value="18,30" />
-                      <Picker.Item label="60 Months" value="24,30" />
-                      <Picker.Item label="72 Months" value="30,30" />
-                      <Picker.Item label="84 Months" value="36,30" />
-                      <Picker.Item label="96 Months" value="48,30" />
-                      <Picker.Item label="96 Months" value="60,30" />
+                      <Picker.Item label="3 Months" value="3,30" />
+                      <Picker.Item label="6 Months" value="6,30" />
+                      <Picker.Item label="12 Months" value="12,30" />
+                      <Picker.Item label="18 Months" value="18,30" />
+                      <Picker.Item label="24 Months" value="24,30" />
+                      <Picker.Item label="30 Months" value="30,30" />
+                      <Picker.Item label="36 Months" value="36,30" />
+                      <Picker.Item label="48 Months" value="48,30" />
+                      <Picker.Item label="60 Months" value="60,30" />
                     </Picker>
                 </Form>
               </Col>

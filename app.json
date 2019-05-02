@@ -10,18 +10,27 @@
     "orientation": "portrait",
     "primaryColor": "#cccccc",
     "packagerOpts": {
-      "assetExts": ["ttf"]
+      "assetExts": [
+        "ttf"
+      ]
     },
     "ios": {
       "bundleIdentifier": "com.belmontfinance.dealers"
     },
-    "android": {                                  
+    "android": {
       "package": "com.belmontfinance.dealers"
     },
     "androidStatusBarColor": "#39aa44",
     "androidStatusBar": {
       "barStyle": "dark-content",
       "backgroundColor": "#39aa44"
-    }
+    },
+    "name": "belmontfinancedealers",
+    "version": "8.2.0",
+    "platforms": [
+      "android",
+      "ios"
+    ],
+    "description": ""
   }
 }

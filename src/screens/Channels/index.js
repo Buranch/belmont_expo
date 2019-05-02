@@ -47,7 +47,7 @@ class Channels extends Component {
           >
             <TabByTotal navigation={this.props.navigation} />
           </Tab>
-          <Tab
+          {/* <Tab
             heading={
               <TabHeading>
                 <Text>By Monthly $ </Text>
@@ -55,7 +55,7 @@ class Channels extends Component {
             }
           >
             <TabByMonthly navigation={this.props.navigation} />
-          </Tab>
+          </Tab> */}
         </Tabs>
       </Container>
     );
