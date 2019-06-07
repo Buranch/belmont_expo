@@ -152,7 +152,7 @@ class TabOne extends Component {
             onRequestClose={() => {
               Alert.alert('Modal has been closed.');
             }}
-            onDismiss={()=> Alert.alert("onDismiss")}
+            // onDismiss={()=> Alert.alert("onDismiss")}
             >
             {/* <ModalWithCard closeModalVisible={()=> {
               this.setState({

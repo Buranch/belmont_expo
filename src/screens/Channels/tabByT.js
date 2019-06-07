@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from "react";
-import {Modal, TouchableHighlight, Alert, Platform} from "react-native";
+import {Modal, TouchableHighlight, Alert, Platform, Linking} from "react-native";
 import {Content, Text, Button, Item, Body, Icon, Input, View, Form, Picker, Left, Switch, Right} from "native-base";
 import {Grid, Col, Row} from "react-native-easy-grid";
 import { Field,reduxForm, reset } from 'redux-form';
@@ -21,6 +21,7 @@ class TabTwo extends Component {
    state = {
     modalVisible: false,
     term: "12,30",
+    rate: 15,
     florida: false
   };
 
@@ -48,7 +49,7 @@ class TabTwo extends Component {
     }
 
     let days = Number(value.term.split(",")[1]);
-    let apr = Number(value.rate) / 100;
+    let apr = value.rate / 100;
     let month = Number(value.term.split(",")[0]);
     console.log("days month", days, month);
     let cashPrice = Number(value.salePrice);
@@ -69,20 +70,20 @@ class TabTwo extends Component {
     let amountFinanced = total2 + flContracts;
 
     console.log("Amount financed ", amountFinanced);
-    let rateFactor = Math.ceil(PMT(apr / 12, month, (1 + apr * (days - 30) / 365)) * 100000) / 100000;
+    let rateFactor = Math.round(PMT(apr / 12, month, (1 + apr * (days - 30) / 365)) * 100000) / 100000;
 
     console.log('rte facator', rateFactor);
     // (0.035643 * 100000) / 100000
-    let monthlyPaymentAmount = Math.ceil(rateFactor * amountFinanced * 100) / 100;
+    let monthlyPaymentAmount = Math.round(rateFactor * amountFinanced * 100) / 100;
 
 
-    let monthlyResult = Math.ceil((monthlyPaymentAmount / rateFactor) * 100) / 100;
+    let monthlyResult = Math.round((monthlyPaymentAmount / rateFactor) * 100) / 100;
 
 
     console.log("MonthlyAmount ", monthlyPaymentAmount)
 
 
-    let totalPayment = Math.ceil(monthlyPaymentAmount * month * 100) / 100;
+    let totalPayment = Math.round(monthlyPaymentAmount * month * 100) / 100;
 
     console.log("Total of Payment ", totalPayment)
 
@@ -149,7 +150,7 @@ class TabTwo extends Component {
             onRequestClose={() => {
               Alert.alert('Modal has been closed.');
             }}
-            onDismiss={()=> Alert.alert("onDismiss")}
+            // onDismiss={()=> Alert.alert("onDismiss")}
             >
             <ModalResult
               monthly
@@ -216,9 +217,26 @@ class TabTwo extends Component {
             <Row>
                <Col style={styles.cols}>
                 <Text style={styles.label}>Rate</Text>
-                 <Field name="rate" rate
+                 {/* <Field name="rate" rate
                   validate={[ Numeric, required]}
-                 component={this.renderInput} />
+                 component={this.renderInput} /> */}
+                  <Picker
+                    note
+                    mode="dropdown"
+                    style={{ width: "100%" }}
+                    selectedValue={this.state.rate}
+                    onValueChange={(e)=>this.onValueChange('rate', e)}
+                  >
+                    <Picker.Item label="15.00%" value={15} />
+                    <Picker.Item label="17.00%" value={17} />
+                    <Picker.Item label="18.00%" value={18} />
+                    <Picker.Item label="19.00%" value={19} />
+                    <Picker.Item label="20.00%" value={20} />
+                    <Picker.Item label="21.00%" value={21} />
+                    <Picker.Item label="21.98%" value={21.98} />
+                    <Picker.Item label="21.99%" value={21.99} />
+                    <Picker.Item label="22.98%" value={22.98} />
+                  </Picker>
               </Col>
             </Row>
             <Row>
@@ -266,6 +284,7 @@ class TabTwo extends Component {
                     console.log('vaule ', {...value,  term: this.state.term});      
 
                     this.doCalculate({...value, 
+                      rate: this.state.rate,
                       salesTax: value.salesTax || 0,
                       tradeIn: value.tradeIn || 0,
                       term: this.state.term});
@@ -297,6 +316,10 @@ class TabTwo extends Component {
                 Clear
                 </Text>
                 </Button>
+                <Text style={{color: "blue", textAlign: "center", marginTop: 10}}
+                      onPress={() => Linking.openURL("https://belmontfinancellc.com/mobile-apps/android-privacy-policy")}>
+                  Privacy Policy
+                </Text>
             </View>
           </Grid>
         </View>

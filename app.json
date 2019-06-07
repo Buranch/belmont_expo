@@ -1,6 +1,6 @@
 {
   "expo": {
-    "sdkVersion": "30.0.0",
+    "sdkVersion": "33.0.0",
     "icon": "./assets/iOS-icon.png",
     "slug": "belmontfinancedealers",
     "splash": {
@@ -15,17 +15,21 @@
       ]
     },
     "ios": {
-      "bundleIdentifier": "com.belmontfinance.dealers"
+      "bundleIdentifier": "com.belmontfinance.dealers",
+      "buildNumber": "com.belmontfinance.dealers.1.2.0"
     },
     "android": {
-      "package": "com.belmontfinance.dealers"
+      "package": "com.belmontfinance.dealers",
+      "versionCode": 4,
+      "permissions": []
     },
+    
     "androidStatusBarColor": "#39aa44",
     "androidStatusBar": {
       "barStyle": "dark-content",
       "backgroundColor": "#39aa44"
     },
-    "name": "belmontfinancedealers",
+    "name": "Loan Calculator",
     "version": "8.2.0",
     "platforms": [
       "android",

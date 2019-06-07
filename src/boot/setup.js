@@ -2,7 +2,7 @@ import * as Expo from "expo";
 import React, { Component } from "react";
 import { Provider } from "react-redux";
 import { StyleProvider } from "native-base";
-
+import { Ionicons } from "@expo/vector-icons";
 import App from "../App";
 import configureStore from "./configureStore";
 import getTheme from "../theme/components";
@@ -27,9 +27,9 @@ export default class Setup extends Component {
   }
   async loadFonts() {
     await Expo.Font.loadAsync({
-      Roboto: require("native-base/Fonts/Roboto.ttf"),
-      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
-      Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf")
+      Roboto: require("../../node_modules/native-base/Fonts/Roboto.ttf"),
+      Roboto_medium: require("../../node_modules/native-base/Fonts/Roboto_medium.ttf"),
+      ...Ionicons.font,
     });
 
     this.setState({ isReady: true });

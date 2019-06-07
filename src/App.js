@@ -1,32 +1,32 @@
 // @flow
 import React, { Component } from "react";
-import { createDrawerNavigator, createSwitchNavigator, createStackNavigator } from "react-navigation";
+import { createSwitchNavigator, createAppContainer, createStackNavigator } from "react-navigation";
 import { Root } from "native-base";
 import { connect} from "react-redux";
 import Login from "./screens/Login/LoginForm";
 import Walkthrough from "./screens/Walkthrough/";
-import Home from "./screens/Home/";
+// import Home from "./screens/Home/";
 import Channels from "./screens/Channels";
-import Sidebar from "./screens/Sidebar";
-import Profile from "./screens/Profile/";
-import CompanyChoose from "./screens/CompanyChoose";
+// import Sidebar from "./screens/Sidebar";
+// import Profile from "./screens/Profile/";
+// import CompanyChoose from "./screens/CompanyChoose";
 import AuthLoading from "./screens/InitialScreen";
 
-export const Drawer = createDrawerNavigator(
-  {
-    Home: { screen: Home },
-    Channels: { screen: Channels },
-    Profile: { screen: Profile },
-  },
-  {
-    initialRouteName: "Channels",
-    contentComponent: props => <Sidebar {...props} />
-  }
-);
+// export const Drawer = createDrawerNavigator(
+//   {
+//     Home: { screen: Home },
+//     Channels: { screen: Channels },
+//     Profile: { screen: Profile },
+//   },
+//   {
+//     initialRouteName: "Channels",
+//     contentComponent: props => <Sidebar {...props} />
+//   }
+// );
 
 const AuthStack = createStackNavigator({
   Login: {screen: Login},
-  CompanyChoose: { screen: CompanyChoose}
+  // CompanyChoose: { screen: CompanyChoose}
 },
 {
     headerMode: "none",
@@ -52,12 +52,12 @@ const AuthStack = createStackNavigator({
 
 const AppStack = createStackNavigator(
   {
-    CompanyChoose: { screen: CompanyChoose},
+    // CompanyChoose: { screen: CompanyChoose},
     Walkthrough: { screen: Walkthrough },
     Channels: { screen: Channels },
-    Home: { screen: Home},
-    Drawer: { screen: Drawer },
-    Profile: { screen: Profile },
+    // Home: { screen: Home},
+    // Drawer: { screen: Drawer },
+    // Profile: { screen: Profile },
   },
   {
     initialRouteName: "Channels",
@@ -76,6 +76,8 @@ const AllStack = createSwitchNavigator({
 }
 );
 
+const AppContainer = createAppContainer(AllStack);
+
 class Booter extends Component {
       constructor(props) {
         super(props);
@@ -83,7 +85,7 @@ class Booter extends Component {
       render() {
         return (
             <Root>
-              <AllStack />
+              <AppContainer />
             </Root>
         );
       }
