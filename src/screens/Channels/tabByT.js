@@ -20,8 +20,9 @@ const required = value => (value ? undefined : "Required");
 class TabTwo extends Component {
    state = {
     modalVisible: false,
-    term: "12,30",
+    term: "12",
     rate: 15,
+    day: 30,
     florida: false
   };
 
@@ -48,9 +49,9 @@ class TabTwo extends Component {
       return pmt;
     }
 
-    let days = Number(value.term.split(",")[1]);
+    let days = Number(value.day);
     let apr = value.rate / 100;
-    let month = Number(value.term.split(",")[0]);
+    let month = Number(value.term);
     console.log("days month", days, month);
     let cashPrice = Number(value.salePrice);
     console.log('salePrice', cashPrice)
@@ -70,7 +71,7 @@ class TabTwo extends Component {
     let amountFinanced = total2 + flContracts;
 
     console.log("Amount financed ", amountFinanced);
-    let rateFactor = Math.round(PMT(apr / 12, month, (1 + apr * (days - 30) / 365)) * 100000) / 100000;
+    let rateFactor = Math.ceil(PMT(apr / 12, month, (1 + apr * (days - 30) / 365)) * 100000) / 100000;
 
     console.log('rte facator', rateFactor);
     // (0.035643 * 100000) / 100000
@@ -176,7 +177,7 @@ class TabTwo extends Component {
             <Row>
               <Col style={styles.infoDiv}>
                 <Text style={styles.infoDivText}>
-                Enter the sales price to calculate the monthly payment amount for the loan
+                Enterr the sales price to calculate the monthly payment amount for the loan
                 </Text>
               </Col>
 
@@ -201,18 +202,36 @@ class TabTwo extends Component {
                       selectedValue={this.state.term}
                       onValueChange={(e)=>this.onValueChange('term', e)}
                     >
-                      <Picker.Item label="3 Months" value="3,30" />
-                      <Picker.Item label="6 Months" value="6,30" />
-                      <Picker.Item label="12 Months" value="12,30" />
-                      <Picker.Item label="18 Months" value="18,30" />
-                      <Picker.Item label="24 Months" value="24,30" />
-                      <Picker.Item label="30 Months" value="30,30" />
-                      <Picker.Item label="36 Months" value="36,30" />
-                      <Picker.Item label="48 Months" value="48,30" />
-                      <Picker.Item label="60 Months" value="60,30" />
+                      <Picker.Item label="3 Months" value="3" />
+                      <Picker.Item label="6 Months" value="6" />
+                      <Picker.Item label="12 Months" value="12" />
+                      <Picker.Item label="18 Months" value="18" />
+                      <Picker.Item label="24 Months" value="24" />
+                      <Picker.Item label="30 Months" value="30" />
+                      <Picker.Item label="36 Months" value="36" />
+                      <Picker.Item label="48 Months" value="48" />
+                      <Picker.Item label="60 Months" value="60" />
                     </Picker>
                 </Form>
               </Col>
+            </Row>
+            <Row>
+              <Col style={styles.cols}>
+                  <Form>
+                      <Text style={styles.label}>Day </Text>
+                      <Picker
+                        note
+                        mode="dropdown"
+                        style={{ width: "100%" }}
+                        selectedValue={this.state.term}
+                        onValueChange={(e)=>this.onValueChange('day', e)}
+                      >
+                        <Picker.Item label="30 days" value={30} />
+                        <Picker.Item label="45 days" value={45} />
+                        <Picker.Item label="90 days" value={90} />
+                      </Picker>
+                  </Form>
+                </Col>
             </Row>
             <Row>
                <Col style={styles.cols}>
@@ -265,18 +284,7 @@ class TabTwo extends Component {
                   component={this.renderInput} />
               </Col>
             </Row>
-            {/* <Row>
-              <Col style={styles.cols}>
-                <Body style={{marginTop: 10}}>
-                  <Text style={{color: "#39aa44"}}>Florida Contract</Text>
-                  <View style={{paddingBottom: 5, paddingTop: 5}}>
-                    <Switch value={this.state.florida}/>
-                  </View>
-              </Body>
-              </Col>
-            </Row> */}
-            {/* <Row style={{flex: 1}}> */}
-            <View style={{flex: 1, alignSelf: "center", marginTop: 30, marginBottom: 10, justifyContent: "flex-end"}}>
+            <View style={{flex: 1, alignSelf: "center", marginTop: 30, marginBottom: 200, justifyContent: "flex-end"}}>
               <Button
                 block
                 onPress={

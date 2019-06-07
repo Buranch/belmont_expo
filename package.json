@@ -38,6 +38,7 @@
     "babel-preset-expo": "^5.1.1",
     "color": "3.1.2",
     "expo": "^33.0.3",
+    "expo-font": "^5.0.1",
     "jest-cli": "24.8.0",
     "lodash": "4.17.11",
     "moment": "2.24.0",
