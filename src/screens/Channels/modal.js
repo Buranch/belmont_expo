@@ -55,7 +55,7 @@ class ModalResult extends Component {
   render() {
     return (
          <View style={styles.modalView}>
-                <Text style={styles.modalMoney}>${!this.props.monthly ? this.props.totalSalesPrice : this.props.monthlyPaymentAmount}</Text>
+                <Text style={styles.modalMoney}>${!this.props.monthly ? this.props.totalSalesPrice.toFixed(2) : this.props.monthlyPaymentAmount.toFixed(2)}</Text>
                 <Text style={styles.totalPriceTxt}>{this.props.monthly ? "Monthly Payment Amount" : "Total Price"}</Text>
                 <TouchableHighlight style={styles.recalculateWrapper}>
                 <Text style={styles.showPaperWorkTxt}

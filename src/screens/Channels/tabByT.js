@@ -143,7 +143,7 @@ class TabTwo extends Component {
 
   render() {
     return (
-      <Content showsVerticalScrollIndicator={false}>
+      <Content showsVerticalScrollIndicator={true} scrollEnabled={true}>
       <Modal
             animationType="slide"
             transparent
@@ -172,12 +172,12 @@ class TabTwo extends Component {
               }
             }} modalVisible={this.state.modalVisible} />
           </Modal>
-        <View style={{ opacity: this.state.modalVisible ? 0.5 : 1 }}>
+        <Content showsVerticalScrollIndicator={true} style={{ opacity: this.state.modalVisible ? 0.5 : 1, flex: 1 }}>
           <Grid>
             <Row>
               <Col style={styles.infoDiv}>
                 <Text style={styles.infoDivText}>
-                Enterr the sales price to calculate the monthly payment amount for the loan
+                Enter the sales price to calculate the monthly payment amount for the loan
                 </Text>
               </Col>
 
@@ -218,17 +218,17 @@ class TabTwo extends Component {
             <Row>
               <Col style={styles.cols}>
                   <Form>
-                      <Text style={styles.label}>Day </Text>
+                      <Text style={styles.label}>Days Deferred</Text>
                       <Picker
                         note
                         mode="dropdown"
                         style={{ width: "100%" }}
-                        selectedValue={this.state.term}
+                        selectedValue={this.state.day}
                         onValueChange={(e)=>this.onValueChange('day', e)}
                       >
-                        <Picker.Item label="30 days" value={30} />
-                        <Picker.Item label="45 days" value={45} />
-                        <Picker.Item label="90 days" value={90} />
+                        <Picker.Item label="30 Days" value={30} />
+                        <Picker.Item label="45 Days" value={45} />
+                        <Picker.Item label="90 Days" value={90} />
                       </Picker>
                   </Form>
                 </Col>
@@ -246,15 +246,24 @@ class TabTwo extends Component {
                     selectedValue={this.state.rate}
                     onValueChange={(e)=>this.onValueChange('rate', e)}
                   >
+                    <Picker.Item label="9.9%" value={9.9} />
+                    <Picker.Item label="13.99%" value={13.99} />
                     <Picker.Item label="15.00%" value={15} />
+                    <Picker.Item label="15.99%" value={15.99} />
                     <Picker.Item label="17.00%" value={17} />
+                    <Picker.Item label="17.99%" value={17.99} />
                     <Picker.Item label="18.00%" value={18} />
+                    <Picker.Item label="18.99%" value={18.99} />
                     <Picker.Item label="19.00%" value={19} />
+                    <Picker.Item label="19.99%" value={19.99} />
                     <Picker.Item label="20.00%" value={20} />
                     <Picker.Item label="21.00%" value={21} />
+                    <Picker.Item label="21.50%" value={21.5} />
                     <Picker.Item label="21.98%" value={21.98} />
                     <Picker.Item label="21.99%" value={21.99} />
                     <Picker.Item label="22.98%" value={22.98} />
+                    <Picker.Item label="22.99%" value={22.99} />
+                    <Picker.Item label="23.99%" value={23.99} />
                   </Picker>
               </Col>
             </Row>
@@ -293,6 +302,7 @@ class TabTwo extends Component {
 
                     this.doCalculate({...value, 
                       rate: this.state.rate,
+                      day: this.state.day,
                       salesTax: value.salesTax || 0,
                       tradeIn: value.tradeIn || 0,
                       term: this.state.term});
@@ -330,7 +340,7 @@ class TabTwo extends Component {
                 </Text>
             </View>
           </Grid>
-        </View>
+        </Content>
       </Content>
     );
   }

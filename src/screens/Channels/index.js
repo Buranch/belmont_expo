@@ -7,8 +7,10 @@ import {
   Right,
   Button,
   Icon,
+  View,
   Tabs,
   Tab,
+  Content,
   Text,
   TabHeading
 } from "native-base";
@@ -36,27 +38,29 @@ class Channels extends Component {
           </Left>
           <Right />
         </Header>
-        <Tabs style={{backgroundColor: "#fff"}}>
-          
-          <Tab
-            heading={
-              <TabHeading>
-                <Text>By Total $ </Text>
-              </TabHeading>
-            }
-          >
-            <TabByTotal navigation={this.props.navigation} />
-          </Tab>
-          {/* <Tab
-            heading={
-              <TabHeading>
-                <Text>By Monthly $ </Text>
-              </TabHeading>
-            }
-          >
-            <TabByMonthly navigation={this.props.navigation} />
-          </Tab> */}
-        </Tabs>
+        <View style={{flex: 1}}>
+          <Tabs style={{backgroundColor: "#fff"}}>
+            
+            <Tab
+              heading={
+                <TabHeading>
+                  <Text>By Total $ </Text>
+                </TabHeading>
+              }
+            >
+              <TabByTotal navigation={this.props.navigation} />
+            </Tab>
+            {/* <Tab
+              heading={
+                <TabHeading>
+                  <Text>By Monthly $ </Text>
+                </TabHeading>
+              }
+            >
+              <TabByMonthly navigation={this.props.navigation} />
+            </Tab> */}
+          </Tabs>
+        </View>
       </Container>
     );
   }

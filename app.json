@@ -15,12 +15,12 @@
       ]
     },
     "ios": {
-      "bundleIdentifier": "com.belmontfinance.dealers",
-      "buildNumber": "com.belmontfinance.dealers.1.2.0"
+      "bundleIdentifier": "combelmontfinancedealersloancalculator",
+      "buildNumber": "1.1.1"
     },
     "android": {
       "package": "com.belmontfinance.dealers",
-      "versionCode": 4,
+      "versionCode": 8,
       "permissions": []
     },
     
@@ -29,7 +29,7 @@
       "barStyle": "dark-content",
       "backgroundColor": "#39aa44"
     },
-    "name": "Loan Calculator",
+    "name": "Belmont Loan Calculator",
     "version": "8.2.0",
     "platforms": [
       "android",

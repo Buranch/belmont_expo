@@ -93,6 +93,7 @@ export default {
   showPaperWorkTxt: {
     color: "#39aa44",
     textAlign: "center",
+    textDecorationLine: 'underline',
     marginTop: 15,
     fontSize: 19,
     fontWeight: "800"
