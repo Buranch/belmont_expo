@@ -40,7 +40,7 @@
     "expo": "^33.0.3",
     "expo-font": "^5.0.1",
     "jest-cli": "24.8.0",
-    "lodash": "4.17.11",
+    "lodash": "4.17.19",
     "moment": "2.24.0",
     "native-base": "2.12.1",
     "react": "16.8.6",
